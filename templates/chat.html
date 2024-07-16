@@ -25,28 +25,34 @@
             <div class="col-lg-8 col-md-12 col-12">
                 <div class="news-body doctor-details-item doctor-details-left footer footer-top">
                     <div class="m-4 p-4 chat">
-
+                        {% for message in messages reversed %}
                         <!-- from ahmed -->
+                         {% if message.author == user %}
                         <div class="row from">
                             <div class="col-lg-8 col-md-6 col-8">
-                                We will meet today to discuss the progress of the project.
+                                {{message.body}}
                             </div>
                             <div class="col-lg-4 col-md-6 col-6 d-flex justify-content-end">
                                 <p>10/27/2024 - 12:00 PM</p>
                             </div>
                         </div>
                         <!-- end from ahmed -->
-
+                        {% else %}
                         <!-- to ahmed -->
                         <div class="row to">
                             <div class="col-lg-8 col-md-6 col-8">
-                                Well then, shall the good news flood.
+                                {{message.body}}
                             </div>
+                            
                             <div class="col-lg-4 col-md-6 col-6 d-flex justify-content-end">
+                                <p>{{message.author.username}}</p> <br>
                                 <p>10/27/2024 - 12:00 PM</p>
+
                             </div>
                         </div>
                         <!-- end to ahmed -->
+                        {% endif %}
+                        {% endfor %}
 
                     </div>
 
