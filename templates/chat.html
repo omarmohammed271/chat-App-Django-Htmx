@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block body %}
+<!-- Single News -->
+<section class="news-single section ">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-4 col-md-6 col-12 mb-4">
+                <div class="news-body doctor-details-item doctor-details-left">
+                    <img src="img/about-img.jpg" alt="#">
+                    <div class="doctor-details-item" >
+                        <div class="doctor-details-left p-5" style="border-radius: 0px 0px 15px 15px;">
+                            <div class="doctor-name">
+                                <h3 class="name">Ahmed Mohammed</h3>
+                                <p class="deg">Neurosurgeon.</p>
+                                <p class="degree">MBBS in Neurology, PHD in Neurosurgeon.</p>
+                                <div class="date"><i class="fa-solid fa-star"></i> 4.6</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- chat section -->
+            <div class="col-lg-8 col-md-12 col-12">
+                <div class="news-body doctor-details-item doctor-details-left footer footer-top">
+                    <div class="m-4 p-4 chat">
+
+                        <!-- from ahmed -->
+                        <div class="row from">
+                            <div class="col-lg-8 col-md-6 col-8">
+                                We will meet today to discuss the progress of the project.
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-6 d-flex justify-content-end">
+                                <p>10/27/2024 - 12:00 PM</p>
+                            </div>
+                        </div>
+                        <!-- end from ahmed -->
+
+                        <!-- to ahmed -->
+                        <div class="row to">
+                            <div class="col-lg-8 col-md-6 col-8">
+                                Well then, shall the good news flood.
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-6 d-flex justify-content-end">
+                                <p>10/27/2024 - 12:00 PM</p>
+                            </div>
+                        </div>
+                        <!-- end to ahmed -->
+
+                    </div>
+
+                    <div class="single-footer pb-4 px-4">
+                        <form action="" method="get" target="_blank" class="newsletter-inner ">
+                            <input name="message" placeholder="Send a message" class="common-input" required="" type="text">
+                            <button type="submit" class="button"><i class="icofont icofont-paper-plane"></i></button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <!-- chat section end -->
+            
+        </div>
+    </div>
+</section>
+<!--/ End Single News -->
+{% endblock body %}
