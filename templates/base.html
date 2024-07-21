@@ -233,9 +233,12 @@
 		<script src="{% static "js/jquery.magnific-popup.min.js" %}"></script>
 		<!-- Counter Up CDN JS -->
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+		<script src="https://unpkg.com/htmx.org@1.7.0"></script>
+		<script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
 		<!-- Bootstrap JS -->
 		<script src="{% static "js/bootstrap.min.js" %}"></script>
 		<!-- Main JS -->
 		<script src="{% static "js/main.js" %}"></script>
+		{% block javascript %}{% endblock %}
     </body>
 </html>

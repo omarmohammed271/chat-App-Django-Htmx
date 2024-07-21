@@ -24,44 +24,25 @@
             <!-- chat section -->
             <div class="col-lg-8 col-md-12 col-12">
                 <div class="news-body doctor-details-item doctor-details-left footer footer-top">
-                    <div class="m-4 p-4 chat">
-                        {% for message in messages reversed %}
-                        <!-- from ahmed -->
-                         {% if message.author == user %}
-                        <div class="row from">
-                            <div class="col-lg-8 col-md-6 col-8">
-                                {{message.body}}
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-6 d-flex justify-content-end">
-                                <p>10/27/2024 - 12:00 PM</p>
-                            </div>
-                        </div>
-                        <!-- end from ahmed -->
-                        {% else %}
-                        <!-- to ahmed -->
-                        <div class="row to">
-                            <div class="col-lg-8 col-md-6 col-8">
-                                {{message.body}}
-                            </div>
-                            
-                            <div class="col-lg-4 col-md-6 col-6 d-flex justify-content-end">
-                                <p>{{message.author.username}}</p> <br>
-                                <p>10/27/2024 - 12:00 PM</p>
-
-                            </div>
-                        </div>
-                        <!-- end to ahmed -->
-                        {% endif %}
-                        {% endfor %}
-
-                    </div>
-
-                    <div class="single-footer pb-4 px-4">
-                        <form action="" method="get" target="_blank" class="newsletter-inner ">
-                            <input name="message" placeholder="Send a message" class="common-input" required="" type="text">
-                            <button type="submit" class="button"><i class="icofont icofont-paper-plane"></i></button>
-                        </form>
-                    </div>
+                    <div id="message-container" class="m-4 p-4 chat" style="overflow-y: auto; height: 400px;">  
+                        {% for message in messages reversed %}  
+                            <!-- from ahmed -->  
+                            {% include "chat_message.html" with message=message %}  
+                        {% endfor %}  
+                    </div>  
+                    
+                    <div class="single-footer pb-4 px-4">  
+                        <form class="newsletter-inner"  
+                              hx-post="{% url 'chatting' %}"  
+                              hx-target="#message-container"  
+                              hx-swap="beforeend"  
+                              _="on htmx:beforeSend reset() me">  
+                            {% csrf_token %}  
+                            {{ form }}  
+                            <button type="submit" class="button"><i class="icofont icofont-paper-plane"></i></button>  
+                        </form>  
+                    </div>  
+                    
 
                 </div>
             </div>
@@ -72,3 +53,17 @@
 </section>
 <!--/ End Single News -->
 {% endblock body %}
+
+{% block javascript %}
+<script>
+
+    function scrollToBottom(time=0) {
+        setTimeout(function() {
+            const container = document.getElementById('message-container');
+            container.scrollTop = container.scrollHeight;
+        }, time);
+    }
+    scrollToBottom()
+
+</script>
+{% endblock %}

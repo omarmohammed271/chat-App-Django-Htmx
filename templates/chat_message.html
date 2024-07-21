@@ -1,0 +1,20 @@
+{% if message.author == user %}  
+<div class="row from">  
+    <div class="col-lg-8 col-md-6 col-8">  
+        {{ message.body }}  
+    </div>  
+    <div class="col-lg-4 col-md-6 col-6 d-flex justify-content-end">  
+        <p>{{ message.created_at|date:"m/d/Y - h:i A" }}</p>  <!-- Assumes created_at is a DateTime field -->  
+    </div>  
+</div>  
+{% else %}  
+<div class="row to">  
+    <div class="col-lg-8 col-md-6 col-8">  
+        {{ message.body }}  
+    </div>  
+    <div class="col-lg-4 col-md-6 col-6 d-flex justify-content-end">  
+        <p>{{ message.author.username }}</p> <br>  
+        <p>{{ message.created_at|date:"m/d/Y - h:i A" }}</p>  
+    </div>  
+</div>  
+{% endif %}
